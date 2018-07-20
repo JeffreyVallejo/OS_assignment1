@@ -21,7 +21,7 @@ main()
  
  switch(pid = fork()) {
  case -1: 
-       perror("\nfork call");
+       perror("\nfork call ");
        exit(2);
  case 0:
        close(1);

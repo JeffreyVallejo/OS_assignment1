@@ -1,40 +1,42 @@
 #include<stdio.h>
 
-main()
+int main()
 {
 	char name[10][10];
-	int class[10] = {0};
-	int userCount = 0;
-	int charCount = 0;
+	int classes[10] = {0};
+	int users = 0;
+	int chars = 0;
 	int c = 0;
 	
+	printf("\n\nenter the student a space then the number of classes \n");
+	printf("(eg. john 6)\n");
 	
 	while (( c = getchar()) != EOF)
 	{
 		if(c >= '0' && c<= '9')
-			if(class[userCount] != 0)
-				class[userCount] = 10 + (c- '0');
+			if(classes[users] != 0)
+				classes[users] = 10 + (c - '0');
 				
 			else
-				class[userCount] += (c - '0');
+				classes[users] += (c - '0');
 		else if (c == '\n')
 		{
-			userCount++;
-			charCount = 0;
+			users++;
+			chars = 0;
 		}
 		else
 		{
-			name[userCount][charCount] = c;
-			putchar(name[userCount][charCount]);
-			charCount++;
+			name[users][chars] = c;
+			chars++;
 		}
 	}
-	
-	for (int i  = 0; i < userCount; i++)
+	printf("\nDisplaying all students that have taken more than 5 classes\n");
+	for (int i  = 0; i < users; i++)
 	{
 		int a = 0;
-		if(class[i] > 5)
+		if(classes[i] > 5)
 		{
+			printf("*");
 			while(name[i][a] != ' ')
 			{
 				putchar(name[i][a]);
@@ -43,4 +45,5 @@ main()
 			printf("\n");
 		}
 	}
+	return 0;
 }

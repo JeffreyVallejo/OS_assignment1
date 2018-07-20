@@ -1,51 +1,76 @@
-#include<stdio.h>
+#include <stdio.h>
 
-main()
+//void swap(
+
+
+int main()
 {
-	char namesArr[10][10];
-	int indexArr[10];
-	int names = 0;
-	int index = 0;
-	int chars = 0;
+	char name[20][20] = {0};
+	int index[20] = {0};
+	int temp[20] = {0};
+	int userCount = 0;
+	int charCount = 0;
 	int c = 0;
-	int a = 0;
+	int indexCount = 0;
 	
-	while (( c = getchar()) != EOF)
+	
+	
+	
+	while((c = getchar()) != EOF)
 	{
-		if (c == '\n')
+		if(c == '\n')
 		{
-			names++;
-			chars = 0;
+			userCount++;
+			charCount = 0;
 		}
 		else
 		{
-			namesArr[names][chars] = c;
-			putchar(namesArr[names][chars]);
-			chars++;
-		}
+			name[userCount][charCount] = c;
+			charCount++;
+		}		
 	}
-	printf("\n");
+
 	
-	while(a >= 0)
+	//Sorting function
+	int a = 0;
+	while(a <= 26)
 	{
-		for(int i = 0; i < names; i++)
+		for(int nameCounter = 0; nameCounter < userCount; nameCounter++)
 		{
-			if(97 + a == namesArr[i][0])
-			{
-				indexArr[index++] = names;
-				putchar(indexArr[i]);
-				printf("\n");
-			}	
-			if(65 + a == namesArr[i][0])
-			{
-				indexArr[index++] = names;
-				putchar(indexArr[i]);
-				printf("\n");
-			}	
+				if(65 + a == name[nameCounter][0])
+					index[indexCount++] = nameCounter;
+			
+				if(97 + a == name[nameCounter][0])
+					index[indexCount++] = nameCounter;	
+		}	
+		a++;
+	}
+	printf("\n\n");	
+	
+	
+	
+	
+	for(int i = 0; i < userCount; i++)
+	{
+
+		if((name[index[i]][0] + 32) == name[index[i]+1][0])
+		{
+			for(int a = 0; a < 20; a++)
+				{
+					temp[a] = name[index[i]][a];
+					name[index[i]][a] =  name[index[i]+1][a];
+					name[index[i]+1][a] = temp[a];
+				}	
 		}
 	}
+		
 	
-	
-	
-	
+	for(int i = 0; i < userCount; i++)
+	{
+		for(int a = 0; a < 20; a++)
+			putchar(name[index[i]][a]);
+		
+		printf("\n");
+	}
+	return 0;
 }

@@ -1,5 +1,7 @@
 #include <unistd.h>
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
 main()
 {
 	pid_t pid;
@@ -9,7 +11,7 @@ main()
 		printf(" parent pid is", getppid() ,"\n");
 		printf(" child pid is", getpid() ,"\n");
 		case -1:
-			perror("fork failed!")
+			perror("fork failed!");
 			break;
 		case 0:
 			execvp(argc1[1], argv[1]);

@@ -69,6 +69,7 @@ int main()
 		for(int j = 0; j < 10; j++)
 			putchar(name[index[i]][j]);
 		
+		printf("%s\n", );
 	}
 	return 0;
 }

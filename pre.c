@@ -38,7 +38,7 @@ int main()
 				putchar(name[i][j]);
 				j++;
 			}
-			//printf("\n");
+			printf("\n");
 		}
 	}
 	return 0;

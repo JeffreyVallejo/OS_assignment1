@@ -26,18 +26,14 @@ main()
        perror("\nfork call ");
        exit(2);
  case 0:
-       //close(1);
        dup(p[1]);
        close(p[0]);
-       //close(p[1]);
        printf("pre\n");
        execl("./pre", "pre",(char *)0);
        perror("\nexecl() pre failed\n");
        break;
  default:
-       //close(0);
        dup(p[0]);
-       //close(p[0]);
        close(p[1]);
        //printf("sort\n");
        execl("./sort", "sort", (char *)0);

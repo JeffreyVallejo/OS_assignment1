@@ -8,9 +8,6 @@ int main()
 	int chars = 0;
 	int c = 0;
 	
-	printf("\n\nenter the student a space then the number of classes \n");
-	printf("(eg. john 6)\n");
-	
 	while (( c = getchar()) != EOF)
 	{
 		if(c >= '0' && c<= '9')
@@ -30,19 +27,18 @@ int main()
 			chars++;
 		}
 	}
-	printf("\nDisplaying all students that have taken more than 5 classes\n");
 	for (int i  = 0; i < users; i++)
 	{
-		int a = 0;
+		int j = 0;
 		if(classes[i] > 5)
 		{
-			printf("*");
-			while(name[i][a] != ' ')
+			
+			while(name[i][j] != ' ')
 			{
 				putchar(name[i][a]);
-				a++;
+				j++;
 			}
-			printf("\n");
+			//printf("\n");
 		}
 	}
 	return 0;

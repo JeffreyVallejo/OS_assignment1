@@ -5,13 +5,13 @@
 
 int main()
 {
-	char name[20][20] = {0};
-	int index[20] = {0};
-	int temp[20] = {0};
-	int userCount = 0;
-	int charCount = 0;
+	char name[10][10] = {0};
+	int index[10] = {0};
+	int temp[10] = {0};
+	int users = 0;
+	int chars = 0;
 	int c = 0;
-	int indexCount = 0;
+	int count = 0;
 	
 	
 	
@@ -20,57 +20,55 @@ int main()
 	{
 		if(c == '\n')
 		{
-			userCount++;
-			charCount = 0;
+			users++;
+			chars = 0;
 		}
 		else
 		{
-			name[userCount][charCount] = c;
-			charCount++;
+			name[users][chars] = c;
+			chars++;
 		}		
 	}
 
 	
 	//Sorting function
-	int a = 0;
-	while(a <= 26)
+	int j = 0;
+	while(j <= 26)
 	{
-		for(int nameCounter = 0; nameCounter < userCount; nameCounter++)
+		for(int nameCounter = 0; nameCounter < users; nameCounter++)
 		{
-				if(65 + a == name[nameCounter][0])
-					index[indexCount++] = nameCounter;
+				if(65 + j == name[nameCounter][0])
+					index[count++] = nameCounter;
 			
-				if(97 + a == name[nameCounter][0])
-					index[indexCount++] = nameCounter;	
+				if(97 + j == name[nameCounter][0])
+					index[count++] = nameCounter;	
 		}	
-		a++;
+		j++;
 	}
-	printf("\n\n");	
 	
 	
 	
 	
-	for(int i = 0; i < userCount; i++)
+	for(int i = 0; i < users; i++)
 	{
 
 		if((name[index[i]][0] + 32) == name[index[i]+1][0])
 		{
-			for(int a = 0; a < 20; a++)
+			for(int j = 0; j < 10; j++)
 				{
-					temp[a] = name[index[i]][a];
-					name[index[i]][a] =  name[index[i]+1][a];
-					name[index[i]+1][a] = temp[a];
+					temp[j] = name[index[i]][j];
+					name[index[i]][j] =  name[index[i]+1][j];
+					name[index[i]+1][j] = temp[j];
 				}	
 		}
 	}
 		
 	
-	for(int i = 0; i < userCount; i++)
+	for(int i = 0; i < users; i++)
 	{
-		for(int a = 0; a < 20; a++)
-			putchar(name[index[i]][a]);
+		for(int j = 0; j < 10; j++)
+			putchar(name[index[i]][j]);
 		
-		printf("\n");
 	}
 	return 0;
 }

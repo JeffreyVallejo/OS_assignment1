@@ -15,29 +15,33 @@ main()
  
  if (pipe(p) == -1)
  {
-  perror("\npipe call");
+  printf("pipe\n");
+  perror("\npipe call failed");
   exit(1);
  }
  
  switch(pid = fork()) {
  case -1: 
+       printf("fork\n");
        perror("\nfork call ");
        exit(2);
  case 0:
-       close(1);
+       //close(1);
        dup(p[1]);
        close(p[0]);
-       close(p[1]);
+       //close(p[1]);
+       printf("pre\n");
        execl("./pre", "pre",(char *)0);
-       perror("\nexecl() failed\n");
+       perror("\nexecl() pre failed\n");
        break;
  default:
-       close(0);
+       //close(0);
        dup(p[0]);
-       close(p[0]);
+       //close(p[0]);
        close(p[1]);
+       //printf("sort\n");
        execl("./sort", "sort", (char *)0);
-       perror("\nexecl() failed\n");
+       perror("\nexecl() sort failed\n");
   }
   
   exit(0);

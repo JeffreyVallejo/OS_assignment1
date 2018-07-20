@@ -35,7 +35,7 @@ int main()
 			
 			while(name[i][j] != ' ')
 			{
-				putchar(name[i][a]);
+				putchar(name[i][j]);
 				j++;
 			}
 			//printf("\n");
